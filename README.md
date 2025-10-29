@@ -1,4 +1,6 @@
 ## 📁 Estructura del repositorio
+
+```
 repo-ML/
 └── MLops_pipeline/
 │   └── src/
@@ -17,3 +19,4 @@ repo-ML/
 ├── .gitignore                        # Exclusiones de git
 ├── readme.md                         # Documentación del proyecto
 └── set_up.bat                        # Script para preparar el entorno
+```
