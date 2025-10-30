@@ -1,1 +1,16 @@
-pandasnnumpynscikit-learn
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+jupyterlab
+notebook
+joblib
+imblearn
+xgboost
+lightgbm
+umap-learn
+statsmodels
+ipython
+black
+flake8
