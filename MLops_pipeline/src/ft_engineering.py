@@ -2,7 +2,7 @@
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
+from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -47,7 +47,8 @@ def run_pipeline():
         num_cols = num_cols + ['Color']
 
     # pipelines simples
-    num_pipe = Pipeline([('imp', SimpleImputer(strategy='median'))])
+    num_pipe = Pipeline([('imp', SimpleImputer(strategy='median')),
+                         ('scaler', MinMaxScaler())])
     cat_pipe = Pipeline([('imp', SimpleImputer(strategy='most_frequent')),
                          ('ohe', OneHotEncoder(handle_unknown='ignore', sparse_output=False))])
     bin_pipe = Pipeline([('imp', SimpleImputer(strategy='most_frequent'))])  # 0/1, por si hay nulos
@@ -67,6 +68,21 @@ def run_pipeline():
     joblib.dump((X_train, X_test, y_train, y_test, preprocessor), 'processed_data.pkl')
     print("Guardado processed_data.pkl")
     print("X_train:", X_train.shape, "X_test:", X_test.shape)
+    
+    
+    X_sample_transformed = preprocessor.fit_transform(X_train.head(20))
+
+    # Obtener nombres de columnas resultantes
+    feature_names = preprocessor.get_feature_names_out()
+
+    # Convertir a DataFrame legible
+    df_transformed = pd.DataFrame(X_sample_transformed, columns=feature_names)
+    print("\n🔍 Vista previa de los datos transformados:")
+    print(df_transformed.head().T)
+    
+    print("\nEstadísticas de variables numéricas transformadas:")
+    print(df_transformed.describe().T[['mean', 'std', 'min', 'max']])
+
     return X_train, X_test, y_train, y_test, preprocessor
 
 if __name__ == "__main__":

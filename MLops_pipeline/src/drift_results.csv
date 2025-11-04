@@ -1,0 +1,12 @@
+Variable,Tipo,Métrica,Valor,P-value,Alerta
+PetType,Categórica,Chi²,,,N/A (tabla vacía)
+Breed,Categórica,Chi²,,,N/A (tabla vacía)
+AgeMonths,Numérica,KS Test,0.05640051188583395,0.4977555442587149,✅ Estable
+Color,Numérica,KS Test,0.03546489833378576,0.9450748939249997,✅ Estable
+Size,Numérica,KS Test,0.05512596786494487,0.5271070697515647,✅ Estable
+WeightKg,Numérica,KS Test,0.0603353110740554,0.4123690391289591,✅ Estable
+Vaccinated,Numérica,KS Test,0.020434068846059385,0.9999820706966915,✅ Estable
+HealthCondition,Numérica,KS Test,0.03943072090588281,0.8857605281639607,✅ Estable
+TimeInShelterDays,Numérica,KS Test,0.04059409780121767,0.864220588529174,✅ Estable
+AdoptionFee,Numérica,KS Test,0.08424916947816083,0.0958158532254896,✅ Estable
+PreviousOwner,Numérica,KS Test,0.012760951900828583,0.9999999999998462,✅ Estable

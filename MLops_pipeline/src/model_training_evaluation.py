@@ -1,3 +1,5 @@
+# model_training_evaluation.py
+
 from matplotlib import pyplot as plt
 import joblib
 import pandas as pd
@@ -43,15 +45,15 @@ if __name__ == "__main__":
 
     # Entrenamiento de varios modelos
     results = []
-    results.append(build_model(LogisticRegression(max_iter=1500, random_state=42), "LogisticRegression"))
-    results.append(build_model(RandomForestClassifier(n_estimators=200, random_state=42), "RandomForest"))
+    results.append(build_model(LogisticRegression(max_iter=5000, random_state=42, n_jobs=-1), "LogisticRegression"))
+    results.append(build_model(RandomForestClassifier(n_estimators=200, random_state=42,n_jobs=-1), "RandomForest"))
     results.append(build_model(
         RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42), 
         "RandomForest_MaxDepth10"
     ))
     results.append(build_model(DecisionTreeClassifier(random_state=42), "DecisionTree"))
     results.append(build_model(GradientBoostingClassifier(n_estimators=200, random_state=42), "GradientBoosting"))
-    results.append(build_model(XGBClassifier(n_estimators=200, use_label_encoder=False, eval_metric='logloss', random_state=42), "XGBoost"))
+    results.append(build_model(XGBClassifier(n_estimators=200, use_label_encoder=False, eval_metric='logloss', random_state=42,n_jobs=-1), "XGBoost"))
     # results.append(build_model(
     #     DecisionTreeClassifier(max_depth=20, random_state=42), 
     #     "DecisionTree_MaxDepth10"
