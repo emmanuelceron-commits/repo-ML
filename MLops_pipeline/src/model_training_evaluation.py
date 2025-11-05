@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import (
     accuracy_score, precision_score, recall_score, 
-    f1_score, confusion_matrix, classification_report
+    f1_score, confusion_matrix, classification_report, roc_auc_score
 )
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
@@ -25,7 +25,9 @@ def summarize_classification(y_true, y_pred, model_name):
         "Accuracy": accuracy_score(y_true, y_pred),
         "Precision": precision_score(y_true, y_pred),
         "Recall": recall_score(y_true, y_pred),
-        "F1": f1_score(y_true, y_pred)
+        "F1": f1_score(y_true, y_pred),
+        "roc": roc_auc_score(y_true, y_pred),
+        "confusion_matrix": confusion_matrix(y_true, y_pred)
     }
 
 def build_model(model, model_name):
@@ -46,7 +48,7 @@ if __name__ == "__main__":
     # Entrenamiento de varios modelos
     results = []
     results.append(build_model(LogisticRegression(max_iter=5000, random_state=42, n_jobs=-1), "LogisticRegression"))
-    results.append(build_model(RandomForestClassifier(n_estimators=200, random_state=42,n_jobs=-1), "RandomForest"))
+    results.append(build_model(RandomForestClassifier(n_estimators=200, random_state=42,n_jobs=-1, class_weight='balanced_subsample'), "RandomForest"))
     results.append(build_model(
         RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42), 
         "RandomForest_MaxDepth10"
@@ -66,8 +68,10 @@ if __name__ == "__main__":
     best_model = df_results.sort_values(by="F1", ascending=False).iloc[0]["Model"]
     print(f"\n🏆 Mejor modelo: {best_model}")
 
-    df_results.set_index("Model")[["Accuracy", "Precision", "Recall", "F1"]].plot(kind='bar', figsize=(8,5))
+    df_results.set_index("Model")[["Accuracy", "Precision", "Recall", "F1", "roc"]].plot(kind='bar', figsize=(8,5))
     plt.title("Comparación de métricas entre modelos")
     plt.xticks(rotation=10)
     plt.grid(axis='y')
     plt.show()
+    
+    

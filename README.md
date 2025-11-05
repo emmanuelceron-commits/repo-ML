@@ -77,7 +77,7 @@ Ejecución de interfaz de Streamlit:
 streamlit run app_streamlit.py
 ```
 
-## 🕵️ Algunos hallazgos durante la exploración de datos
+## 🕵️ Algunos hallazgos del dataset durante la exploración
 
 ### ℹ️ Descripción general de los datos:
 
@@ -93,6 +93,33 @@ Estos datos se pueden usar para:
 
 - Desarrollo de estrategias para incrementar las adopciones.
 
-[Abrir notebook para ver más detalles](./MLops_pipeline/src/comprension_eda.ipynb)
+⛔ No hay nulos en el dataset
+
+### 🔎📑📊 En la exploración de datos (EDA)
+
+- Las mascotas con menos de 50 meses tienden a ser más adoptadas
+- Las mascotas con más de 100 meses tienden a ser menos adoptadas
+
+- La diferencia entre mascotas adoptadas y sin adoptar en el dataset es de 1 a 3 (un 33% aprox son adoptadas, un 66% están sin adoptar), lo cual puede ser un desbalanceo que deba considerarse en el modelamiento
+
+Luego de revisar la relación entre variables categóricas y la variable objetivo:
+
+- Si p ≈ 0 y Cramer's V > 0.3, hay relación real y relevante. Las variables Size y Vaccinated entran en esta categoría
+
+- Si p ≈ 0 pero Cramer's V < 0.2 → relación estadísticamente detectable pero débil (Breed, PetType, HealthCondition).
+
+- Si p es grande (ej. 0.37 en Color) → no hay casi evidencia de relación, y además V confirma que es irrelevante. Por lo que PreviousOwner y Color parecen no influir mucho en la adoptabilidad
+
+Reglas de validación de datos sugeridas:
+
+- AgeMonths debe ser >= 0 y < 240.
+
+- WeightKg > 0 y < 100.
+
+- Categorías con muy pocos registros agrupar en 'Other' (ej. razas raras).
+
+- Especie que coincida con raza
+
+[Abrir notebook de comprensión_eda.ipynb para ver más detalles](./MLops_pipeline/src/comprension_eda.ipynb)
 
 ---
