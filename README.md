@@ -48,7 +48,7 @@ repo-ML/
 │        └── app_streamlit.py               # Interfaz visual de streamlit
 │
 ├── config.json                             # Archivo de configuración de pipeline
-├── Base_de_datos.csv                       # Dataset
+├── Base_de_datos.csv                       # Ubicación del dataset
 ├── requirements.txt                        # Librerías y dependencias
 ├── .gitignore                              # Exclusiones de git
 ├── readme.md                               # Documentación del proyecto
@@ -59,19 +59,22 @@ repo-ML/
 
 Transformaciones, modelamiento y generación de métricas:
 
-`
+```
 python ft_engineering.py
 python model_training_evaluation.py
 python model_monitoring.py
-`
+```
 Despliegue de API:
+```
+uvicorn src.model_deploy:app --reload
+```
 
-- uvicorn src.model_deploy:app --reload
 - Enlace de pruebas: http://127.0.0.1:8000/docs
 
 Ejecución de interfaz de Streamlit:
-
-- streamlit run app_streamlit.py
+```
+streamlit run app_streamlit.py
+```
 
 ## 🕵️ Algunos hallazgos durante la exploración de datos
 
