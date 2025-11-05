@@ -64,13 +64,14 @@ python ft_engineering.py
 python model_training_evaluation.py
 python model_monitoring.py
 ```
+---
 Despliegue de API:
 ```
 uvicorn src.model_deploy:app --reload
 ```
 
 - Enlace de pruebas: http://127.0.0.1:8000/docs
-
+---
 Ejecución de interfaz de Streamlit:
 ```
 streamlit run app_streamlit.py
@@ -80,7 +81,7 @@ streamlit run app_streamlit.py
 
 ### ℹ️ Descripción general de los datos:
 
-Este dataset de Kaggle contiene datos de mascotas en adopción, el cuál es sintético, recolectado en un periodo específico de tiempo con propósitos educacionales. 
+Este dataset de Kaggle contiene 2007 datos de mascotas en adopción, el cuál es sintético y fue recolectado en un periodo específico de tiempo con propósitos educacionales. 
 
 > Si bien esto **no lo hace ideal para generalizar el comportamiento de las adopciones**, termina siendo ideal para proyectos de Machine Learning o Data Science con interés de aprender, predecir y entender tendencias de adopciones. 
 
@@ -93,3 +94,5 @@ Estos datos se pueden usar para:
 - Desarrollo de estrategias para incrementar las adopciones.
 
 [Abrir notebook para ver más detalles](./MLops_pipeline/src/comprension_eda.ipynb)
+
+---
