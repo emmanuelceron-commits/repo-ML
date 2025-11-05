@@ -4,7 +4,7 @@
 # Ejecutar con:  streamlit run app_streamlit.py
 # ============================================================
 
-import streamlit as st
+import streamlit as st # type: ignore
 import pandas as pd
 import joblib
 import numpy as np
@@ -12,8 +12,8 @@ import numpy as np
 # ==============================
 # Configuración general
 # ==============================
-st.set_page_config(page_title="Pet Adoption ML App 🐶🐱", layout="wide")
-st.title("🐾 Sistema Predictivo y de Monitoreo - Adopción de Mascotas")
+st.set_page_config(page_title="ML App Mascotas 🐶🐱", layout="wide")
+st.title("🐾 Sistema Predictivo y Monitoreo - Adopción de Mascotas")
 
 # ==============================
 # Cargar modelo y preprocesador
@@ -43,7 +43,7 @@ with tab1:
 
     try:
         df_drift = pd.read_csv("drift_results.csv")
-        st.dataframe(df_drift, use_container_width=True)
+        st.dataframe(df_drift, width="stretch")
 
         st.subheader("📉 Métricas de Drift (PSI y KS Test)")
         num_drift = df_drift[df_drift["Tipo"] == "Numérica"][["Variable", "Valor", "Alerta"]]
@@ -61,7 +61,7 @@ with tab1:
 # 🐕 TAB 2: Predicción del modelo
 # ============================================================
 with tab2:
-    st.header("🎯 Predicción de probabilidad de adopción")
+    st.header("🖥️🎯 Predicción de probabilidad de adopción")
 
     st.markdown("Completa la información de la mascota para estimar la **probabilidad de adopción**:")
 
