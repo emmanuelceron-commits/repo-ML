@@ -123,3 +123,12 @@ Reglas de validación de datos sugeridas:
 [Abrir notebook de comprensión_eda.ipynb para ver más detalles](./MLops_pipeline/src/comprension_eda.ipynb)
 
 ---
+
+## 🐋 Construcción y ejecución de imagen de Docker
+
+```
+docker build -t pet-adoption-api .
+docker run -p 8000:8000 pet-adoption-api
+```
+
+---
