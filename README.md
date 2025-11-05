@@ -59,11 +59,11 @@ repo-ML/
 
 Transformaciones, modelamiento y generación de métricas:
 
-```
+`
 python ft_engineering.py
 python model_training_evaluation.py
 python model_monitoring.py
-```
+`
 Despliegue de API:
 
 - uvicorn src.model_deploy:app --reload
