@@ -130,5 +130,86 @@ Reglas de validación de datos sugeridas:
 docker build -t pet-adoption-api .
 docker run -p 8000:8000 pet-adoption-api
 ```
+- Luego de ejecutar la imagen se pueden testear los endpoints en localhost:8000/docs
+
+Datos de prueba para los endpoints:
+```
+Mascota con baja adoptabilidad:
+
+{
+  "PetType": "Rabbit",
+  "Breed": "Rabbit",
+  "AgeMonths": 70,
+  "Color": "Gray",
+  "Size": "Small",
+  "WeightKg": 3.0,
+  "Vaccinated": 0,
+  "HealthCondition": 1,
+  "TimeInShelterDays": 120,
+  "AdoptionFee": 400,
+  "PreviousOwner": 0
+}
+
+Mascota con alta probabilidad:
+
+{
+  "PetType": "Dog",
+  "Breed": "Labrador",
+  "AgeMonths": 10,
+  "Color": "Brown",
+  "Size": "Medium",
+  "WeightKg": 18.0,
+  "Vaccinated": 1,
+  "HealthCondition": 0,
+  "TimeInShelterDays": 15,
+  "AdoptionFee": 150,
+  "PreviousOwner": 1
+}
+
+Varias mascotas:
+
+[
+  {
+    "PetType": "Dog",
+    "Breed": "Golden Retriever",
+    "AgeMonths": 8,
+    "Color": "White",
+    "Size": "Large",
+    "WeightKg": 25.0,
+    "Vaccinated": 1,
+    "HealthCondition": 0,
+    "TimeInShelterDays": 10,
+    "AdoptionFee": 200,
+    "PreviousOwner": 1
+  },
+  {
+    "PetType": "Cat",
+    "Breed": "Persian",
+    "AgeMonths": 36,
+    "Color": "Gray",
+    "Size": "Small",
+    "WeightKg": 5.0,
+    "Vaccinated": 1,
+    "HealthCondition": 0,
+    "TimeInShelterDays": 60,
+    "AdoptionFee": 300,
+    "PreviousOwner": 0
+  },
+  {
+    "PetType": "Rabbit",
+    "Breed": "Rabbit",
+    "AgeMonths": 72,
+    "Color": "Brown",
+    "Size": "Small",
+    "WeightKg": 3.2,
+    "Vaccinated": 0,
+    "HealthCondition": 1,
+    "TimeInShelterDays": 150,
+    "AdoptionFee": 450,
+    "PreviousOwner": 0
+  }
+]
+
+```
 
 ---

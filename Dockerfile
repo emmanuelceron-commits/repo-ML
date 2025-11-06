@@ -6,6 +6,8 @@ WORKDIR /app
 
 # Copiar dependencias y código
 COPY requirements.txt .
+COPY RandomForest_model.pkl .
+
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
