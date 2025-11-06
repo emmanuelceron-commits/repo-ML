@@ -132,7 +132,8 @@ docker run -p 8000:8000 pet-adoption-api
 ```
 - Luego de ejecutar la imagen se pueden testear los endpoints en localhost:8000/docs
 
-Datos de prueba para los endpoints:
+<details><summary>Datos de prueba para los endpoints (desplegar para ver)</summary>
+
 ```
 Mascota con baja adoptabilidad:
 
@@ -211,5 +212,30 @@ Varias mascotas:
 ]
 
 ```
-
+</details>
 ---
+
+## 📝 Resultados de pruebas en sonarcloud.io
+
+1. Calidad del código: Evalúa la mantenibilidad del código fuente. 
+
+- Código duplicado: 0.0% Duplications
+- Mantenibilidad: A, significa que el ratio de deuda técnica es menor al 5%
+
+- Complejidad ciclomática excesiva 
+- Funciones demasiado largas o difíciles de entender 
+- Malas prácticas de programación 
+
+2. Seguridad: Detecta vulnerabilidades y puntos débiles que podrían ser explotados por  atacantes. 
+
+- Puntuación de seguridad: A, 0 issues abiertos
+
+3. Cobertura de Pruebas: Mide qué porcentaje del código está cubierto por pruebas unitarias o de integración.  
+
+- Líneas de código ejecutadas durante las pruebas 
+- Métodos y funciones validadas 
+
+4. Integridad y Estilo: Verifica que el código siga convenciones de estilo y buenas prácticas.
+
+- Nombres de variables y funciones 
+- Uso adecuado de espacios, indentación y estructuras - Consistencia en la escritura del código
