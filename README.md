@@ -211,6 +211,13 @@ Varias mascotas:
   }
 ]
 
+en .csv:
+
+PetType,Breed,AgeMonths,Color,Size,WeightKg,Vaccinated,HealthCondition,TimeInShelterDays,AdoptionFee,PreviousOwner
+Dog,Golden Retriever,8,White,Large,25.0,1,0,10,200,1
+Cat,Persian,36,Gray,Small,5.0,1,0,60,300,0
+Rabbit,Rabbit,72,Brown,Small,3.2,0,1,150,450,0
+
 ```
 </details>
 ---
