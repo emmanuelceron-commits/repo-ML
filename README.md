@@ -10,9 +10,58 @@ Todo esto se puede lograr con la ayuda de una **base de datos de mascotas** (en 
 
 [Link del dataset original en Kaggle](https://www.kaggle.com/datasets/rabieelkharoua/predict-pet-adoption-status-dataset/data)
 
+## 🕵️ Algunos hallazgos del dataset durante la exploración del dataset
+
+### ℹ️ Descripción general de los datos:
+
+Este dataset de Kaggle contiene 2007 datos de mascotas en adopción, el cuál es sintético y fue recolectado en un periodo específico de tiempo con propósitos educacionales. 
+
+> Si bien esto **no lo hace ideal para generalizar el comportamiento de las adopciones**, termina siendo ideal para proyectos de Machine Learning o Data Science con interés de aprender, predecir y entender tendencias de adopciones. 
+
+Estos datos se pueden usar para:
+
+- Modelamiento predictivo para determinar la adoptabilidad de una mascota
+
+- Análisis de impacto de varios factores en las tasas de adopción
+
+- Desarrollo de estrategias para incrementar las adopciones.
+
+⛔ No hay nulos en el dataset
+
+### 🔎📑📊 Hallazgos relevantes en la exploración de datos (EDA)
+
+- Las mascotas con menos de 50 meses tienden a ser más adoptadas
+- Las mascotas con más de 100 meses tienden a ser menos adoptadas
+
+- La diferencia entre mascotas adoptadas y sin adoptar en el dataset es de 1 a 3 (un 33% aprox son adoptadas, un 66% están sin adoptar), lo cual puede ser un desbalanceo que deba considerarse en el modelamiento
+
+Luego de revisar la relación entre variables categóricas y la variable objetivo:
+
+- Si p ≈ 0 y Cramer's V > 0.3, hay relación real y relevante. Las variables Size y Vaccinated entran en esta categoría
+
+- Si p ≈ 0 pero Cramer's V < 0.2 → relación estadísticamente detectable pero débil (Breed, PetType, HealthCondition).
+
+- Si p es grande (ej. 0.37 en Color) → no hay casi evidencia de relación, y además V confirma que es irrelevante. Por lo que PreviousOwner y Color pueden no influir mucho en la adoptabilidad.
+
+Posibles reglas de validación de datos:
+
+- AgeMonths debe ser >= 0 y < 240.
+
+- WeightKg > 0 y < 100.
+
+- Categorías con muy pocos registros agrupar en 'Other' (ej. razas raras).
+
+- Especie que coincida con raza
+
+[Abrir notebook de comprensión_eda.ipynb para ver más detalles](./MLops_pipeline/src/comprension_eda.ipynb)
+
+---
+
 ## 📁 Estructura del repositorio
 
-(estructura recomendada y planteada en clase)
+<details><summary>(Estructura recomendada y planteada en clase)</summary>
+
+
 ```
 repo-ML/
 └── MLops_pipeline/
@@ -33,8 +82,12 @@ repo-ML/
 ├── readme.md                         # Documentación del proyecto
 └── set_up.bat                        # Script para preparar el entorno
 ```
+</details>
 
-(estructura de archivos usados en el proyecto)
+---
+
+
+(Estructura de archivos usados en el proyecto)
 ```
 repo-ML/
 └── MLops_pipeline/
@@ -54,10 +107,12 @@ repo-ML/
 ├── readme.md                               # Documentación del proyecto
 └── set_up.bat                              # Script para preparar el entorno
 ```
+---
+## 🛤️ Flujos de ejecución del repositorio
 
-## 🛤️ Flujos de ejecución
+- Transformaciones, modelamiento y generación de métricas:
 
-Transformaciones, modelamiento y generación de métricas:
+(Ubicarse en MLopspipeline\src)
 
 ```
 python ft_engineering.py
@@ -77,53 +132,6 @@ Ejecución de interfaz de Streamlit:
 streamlit run app_streamlit.py
 ```
 
-## 🕵️ Algunos hallazgos del dataset durante la exploración
-
-### ℹ️ Descripción general de los datos:
-
-Este dataset de Kaggle contiene 2007 datos de mascotas en adopción, el cuál es sintético y fue recolectado en un periodo específico de tiempo con propósitos educacionales. 
-
-> Si bien esto **no lo hace ideal para generalizar el comportamiento de las adopciones**, termina siendo ideal para proyectos de Machine Learning o Data Science con interés de aprender, predecir y entender tendencias de adopciones. 
-
-Estos datos se pueden usar para:
-
-- Modelamiento predictivo para determinar la adoptabilidad de una mascota
-
-- Análisis de impacto de varios factores en las tasas de adopción
-
-- Desarrollo de estrategias para incrementar las adopciones.
-
-⛔ No hay nulos en el dataset
-
-### 🔎📑📊 En la exploración de datos (EDA)
-
-- Las mascotas con menos de 50 meses tienden a ser más adoptadas
-- Las mascotas con más de 100 meses tienden a ser menos adoptadas
-
-- La diferencia entre mascotas adoptadas y sin adoptar en el dataset es de 1 a 3 (un 33% aprox son adoptadas, un 66% están sin adoptar), lo cual puede ser un desbalanceo que deba considerarse en el modelamiento
-
-Luego de revisar la relación entre variables categóricas y la variable objetivo:
-
-- Si p ≈ 0 y Cramer's V > 0.3, hay relación real y relevante. Las variables Size y Vaccinated entran en esta categoría
-
-- Si p ≈ 0 pero Cramer's V < 0.2 → relación estadísticamente detectable pero débil (Breed, PetType, HealthCondition).
-
-- Si p es grande (ej. 0.37 en Color) → no hay casi evidencia de relación, y además V confirma que es irrelevante. Por lo que PreviousOwner y Color parecen no influir mucho en la adoptabilidad
-
-Reglas de validación de datos sugeridas:
-
-- AgeMonths debe ser >= 0 y < 240.
-
-- WeightKg > 0 y < 100.
-
-- Categorías con muy pocos registros agrupar en 'Other' (ej. razas raras).
-
-- Especie que coincida con raza
-
-[Abrir notebook de comprensión_eda.ipynb para ver más detalles](./MLops_pipeline/src/comprension_eda.ipynb)
-
----
-
 ## 🐋 Construcción y ejecución de imagen de Docker
 
 ```
@@ -134,9 +142,9 @@ docker run -p 8000:8000 pet-adoption-api
 
 <details><summary>Datos de prueba para los endpoints (desplegar para ver)</summary>
 
-```
-Mascota con baja adoptabilidad:
 
+Mascota con baja adoptabilidad:
+```
 {
   "PetType": "Rabbit",
   "Breed": "Rabbit",
@@ -150,9 +158,9 @@ Mascota con baja adoptabilidad:
   "AdoptionFee": 400,
   "PreviousOwner": 0
 }
-
+```
 Mascota con alta probabilidad:
-
+```
 {
   "PetType": "Dog",
   "Breed": "Labrador",
@@ -166,9 +174,9 @@ Mascota con alta probabilidad:
   "AdoptionFee": 150,
   "PreviousOwner": 1
 }
-
+```
 Varias mascotas:
-
+```
 [
   {
     "PetType": "Dog",
@@ -210,9 +218,9 @@ Varias mascotas:
     "PreviousOwner": 0
   }
 ]
-
+```
 en .csv:
-
+```
 PetType,Breed,AgeMonths,Color,Size,WeightKg,Vaccinated,HealthCondition,TimeInShelterDays,AdoptionFee,PreviousOwner
 Dog,Golden Retriever,8,White,Large,25.0,1,0,10,200,1
 Cat,Persian,36,Gray,Small,5.0,1,0,60,300,0
