@@ -299,27 +299,38 @@ Rabbit,Rabbit,72,Brown,Small,3.2,0,1,150,450,0
 
 ---
 
-## 📝 Resultados de pruebas en sonarcloud.io
+## 📝 Resultados de pruebas iniciales en sonarcloud.io
 
-1. Calidad del código: Evalúa la mantenibilidad del código fuente. 
+### 📄 Resumen general
+![Resultado de pruebas: Overall code](imgs/sonarcube_1.png)
+
+
+
+- No se detecta código duplicado o con problemas de seguridad considerables
+- Se marcan 5 asuntos de fiabilidad, 19 de mantenibilidad y 2 posibles puntos críticos de seguridad
+
+
+
+### ✅👌 Calidad del código: 
 
 - Código duplicado: 0.0% Duplications
-- Mantenibilidad: A, significa que el ratio de deuda técnica es menor al 5%
+- Fiabilidad: A, con solo 5 asuntos, los cuales son recomendaciones sobre añadir hyper parámetros faltantes en la creación de varios modelos.
+- Mantenibilidad: A, significa que el ratio de deuda técnica es menor al 5% (solo 19 asuntos):
 
-- Complejidad ciclomática excesiva 
-- Funciones demasiado largas o difíciles de entender 
-- Malas prácticas de programación 
+  - 5 de estos asuntos son todos los asuntos de fiabilidad
+  - Un asunto es sobre el Dockerfile y combinar dos comandos RUN que se ejecutan consecutivamente
+  - Un asunto en app_streamlit.py (para controlar una excepción en caso de no cargar el modelo)
+  - 2 asuntos en el .ipynb del EDA sobre código comentado
+  - 4 asuntos en el feature engineering (renombrar una variable y memory argument para los pipelines)
+  - 2 asuntos en el model_deploy.py sobre remover una variable sin usar y agregar lógica a un except
+  - 3 asuntos en model_monitoring.py porque se repiten varios Strings en el código que se pueden
+  - un asunto en el model_training_evaluation.py sobre especificar memory argument para pipeline
 
-2. Seguridad: Detecta vulnerabilidades y puntos débiles que podrían ser explotados por  atacantes. 
 
+### 🛡️ Seguridad: 
 - Puntuación de seguridad: A, 0 issues abiertos
+- Se detectaron 2 posibles puntos críticos de seguridad en el Dockerfile:
 
-3. Cobertura de Pruebas: Mide qué porcentaje del código está cubierto por pruebas unitarias o de integración.  
+![Resultado de pruebas: Overall code](imgs/securityhotspot1.png)
+![Resultado de pruebas: Overall code](imgs/securityhotspot2.png)
 
-- Líneas de código ejecutadas durante las pruebas 
-- Métodos y funciones validadas 
-
-4. Integridad y Estilo: Verifica que el código siga convenciones de estilo y buenas prácticas.
-
-- Nombres de variables y funciones 
-- Uso adecuado de espacios, indentación y estructuras - Consistencia en la escritura del código
