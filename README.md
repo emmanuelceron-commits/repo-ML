@@ -114,7 +114,7 @@ repo-ML/
 ---
 ## 🛤️ Flujos de ejecución del repositorio
 
-Luego de descargar el repositorio y posicionarse en la carpeta raíz:
+Teniendo instalado Python, luego de descargar el repositorio y posicionarse en la carpeta raíz:
 
 1. Ejecutar set_up.bat, creará el entorno e instalará las librerías necesarias para la ejecución
 
@@ -176,8 +176,15 @@ streamlit run app_streamlit.py
 
 ### 🐋 Construcción y ejecución de imagen de Docker
 
+Hay que ubicarse nuevamente en la carpeta raíz del proyecto 
 
-Crear imagen de la API:
+> Ejecutar el comando si aún se ubica en /src :
+
+```
+cd ../..
+```
+
+Teniendo Docker instalado y en ejecución, se ejecuta el siguiente comando para crear la imagen de la API:
 
 ```
 docker build -t pet-adoption-api .
@@ -198,6 +205,8 @@ docker run -p 8000:8000 pet-adoption-api
 <details><summary>(desplegar para ver)</summary>
 
 ---
+
+> Endpoint /predict
 
 Mascota con baja adoptabilidad:
 ```
@@ -275,6 +284,8 @@ Varias mascotas:
   }
 ]
 ```
+> Endpoint /predict_batch
+
 en .csv:
 ```
 PetType,Breed,AgeMonths,Color,Size,WeightKg,Vaccinated,HealthCondition,TimeInShelterDays,AdoptionFee,PreviousOwner
