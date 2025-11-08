@@ -312,19 +312,23 @@ Rabbit,Rabbit,72,Brown,Small,3.2,0,1,150,450,0
 
 
 ### ✅👌 Calidad del código: 
-
 - Código duplicado: 0.0% Duplications
 - Fiabilidad: A, con solo 5 asuntos, los cuales son recomendaciones sobre añadir hyper parámetros faltantes en la creación de varios modelos.
 - Mantenibilidad: A, significa que el ratio de deuda técnica es menor al 5% (solo 19 asuntos):
 
-  - 5 de estos asuntos son todos los asuntos de fiabilidad
+
+![](<imgs/sonarcube_3.png>)
   - Un asunto es sobre el Dockerfile y combinar dos comandos RUN que se ejecutan consecutivamente
   - Un asunto en app_streamlit.py (para controlar una excepción en caso de no cargar el modelo)
   - 2 asuntos en el .ipynb del EDA sobre código comentado
   - 4 asuntos en el feature engineering (renombrar una variable y memory argument para los pipelines)
+
+![](imgs/sonarcube_2.png)
+
   - 2 asuntos en el model_deploy.py sobre remover una variable sin usar y agregar lógica a un except
   - 3 asuntos en model_monitoring.py porque se repiten varios Strings en el código que se pueden
   - un asunto en el model_training_evaluation.py sobre especificar memory argument para pipeline
+  - 5 de estos asuntos son todos los asuntos de fiabilidad
 
 
 ### 🛡️ Seguridad: 
