@@ -100,11 +100,13 @@ repo-ML/
 │        ├── model_deploy.py                # Despliegue (API)
 │        └── app_streamlit.py               # Interfaz visual de streamlit
 │
-├── config.json                             # Archivo de configuración de pipeline
 ├── Base_de_datos.csv                       # Ubicación del dataset
+├── config.json                             # Archivo de configuración de pipeline
 ├── requirements.txt                        # Librerías y dependencias
+├── Dockerfile                              # Configuración docker
+├── .dockerignore                              # Exclusiones de docker
 ├── .gitignore                              # Exclusiones de git
-├── readme.md                               # Documentación del proyecto
+├── README.md                               # Documentación del proyecto
 └── set_up.bat                              # Script para preparar el entorno
 ```
 ---
