@@ -10,6 +10,8 @@ Todo esto se puede lograr con la ayuda de una **base de datos de mascotas** (en 
 
 [Link del dataset original en Kaggle](https://www.kaggle.com/datasets/rabieelkharoua/predict-pet-adoption-status-dataset/data)
 
+---
+
 ## 🕵️ Algunos hallazgos del dataset durante la exploración del dataset
 
 ### ℹ️ Descripción general de los datos
