@@ -1,4 +1,4 @@
-# 💻 Proyecto de Machine Learning:
+# 💻 Proyecto de Machine Learning
 
 ## 🐶🐱🐾 Clasificación de adoptadibilidad de mascotas 🐰🐹🎲
 
@@ -12,7 +12,7 @@ Todo esto se puede lograr con la ayuda de una **base de datos de mascotas** (en 
 
 ## 🕵️ Algunos hallazgos del dataset durante la exploración del dataset
 
-### ℹ️ Descripción general de los datos:
+### ℹ️ Descripción general de los datos
 
 Este dataset de Kaggle contiene 2007 datos de mascotas en adopción, el cuál es sintético y fue recolectado en un periodo específico de tiempo con propósitos educacionales. 
 
@@ -118,7 +118,7 @@ Luego de descargar el repositorio y posicionarse en la carpeta raíz:
 
 2. Inicializar el entorno (lo hace set_up.bat)
 
-> Abrir la terminal de comandos, ubicarse en la carpeta raíz y ejecutar el siguiente comando si el entorno no se inició con set_up.bat:
+> Abrir la terminal de comandos ubicada en la carpeta raíz y ejecutar el siguiente comando si el entorno no se inició con set_up.bat:
 
 ```
 pet_adoption_ml-venv\Scripts\activate
@@ -129,7 +129,7 @@ pet_adoption_ml-venv\Scripts\activate
 cd .\MLops_pipeline\src\
 ```
 
-### ⚙️🖥️📊 Transformaciones, modelamiento y generación de métricas:
+### ⚙️🧑‍💻📊 Transformaciones, modelamiento y generación de métricas
 
 - Generación de features:
 ```
@@ -148,32 +148,53 @@ python model_monitoring.py
 
 ---
 
-### 🦄 Despliegue de API con uvicorn:
-Esta API usa el modelo que mejor se desempeñó (en nuestro caso, Random Forest) para generar las probabilidad de adopción de las mascotas que se le envíen
+### 🦄 Despliegue de API con uvicorn
+Esta API usa el modelo que mejor se desempeñó (en nuestro caso, Random Forest) para generar las probabilidad de adopción de las mascotas que se le envíen.
 
 ```
-uvicorn src.model_deploy:app --reload
+uvicorn model_deploy:app --reload
 ```
 
 - Enlace de pruebas: http://127.0.0.1:8000/docs
+
+> Abajo hay una sección desplegable con datos de prueba tanto en formato JSON como CSV que se pueden usar para probar la API. 
+
 ---
-Ejecución de interfaz de Streamlit:
+### 📱📶 Ejecución de interfaz gráfica de Streamlit
+
+Esta interfaz no hace uso de la API, funciona independientemente y usa el modelo RandomForest directamente, y también permite visualizar algunas métricas.
+
 ```
 streamlit run app_streamlit.py
 ```
 
+- Se abre en http://localhost:8501
+
 ### 🐋 Construcción y ejecución de imagen de Docker
+
+---
+
+Crear imagen de la API:
 
 ```
 docker build -t pet-adoption-api .
+```
+
+Ejecutar imagen de la API:
+
+```
 docker run -p 8000:8000 pet-adoption-api
 ```
-- Luego de ejecutar la imagen se pueden testear los endpoints en localhost:8000/docs
+- Luego de ejecutar la imagen se pueden testear los endpoints en http://localhost:8000/docs
+
+---
+
 
 ### 🧪 Datos de prueba para los endpoints 
 
 <details><summary>(desplegar para ver)</summary>
 
+---
 
 Mascota con baja adoptabilidad:
 ```
@@ -259,7 +280,9 @@ Cat,Persian,36,Gray,Small,5.0,1,0,60,300,0
 Rabbit,Rabbit,72,Brown,Small,3.2,0,1,150,450,0
 
 ```
+
 </details>
+
 ---
 
 ## 📝 Resultados de pruebas en sonarcloud.io

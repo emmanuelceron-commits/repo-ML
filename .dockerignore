@@ -1,8 +1,14 @@
 __pycache__/
-# *.pkl
-*.joblib
+pet_adoption_ml-venv/
+.venv/
+*.pkl
+!MLops_pipeline/src/RandomForest_model.pkl
+*.py
+!MLops_pipeline/src/model_deploy.py
 *.csv
 *.ipynb
+*.bat
+*.json
 .env
 .git
 .gitignore

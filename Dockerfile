@@ -5,11 +5,11 @@ FROM python:3.11
 WORKDIR /app
 
 # Copiar dependencias y código
-COPY requirements.txt .
+COPY requirements_docker.txt .
 COPY MLops_pipeline/src/RandomForest_model.pkl .
 
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements_docker.txt
 
 COPY . .
 
