@@ -112,7 +112,7 @@ repo-ML/
 
 - Transformaciones, modelamiento y generación de métricas:
 
-(Ubicarse en MLopspipeline\src)
+(Ubicarse en MLops_pipeline\src)
 
 ```
 python ft_engineering.py
