@@ -2,3 +2,4 @@
 *.csv
 !Base_de_datos.csv
 !RandomForest.pkl
+__pycache__/

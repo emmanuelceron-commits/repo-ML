@@ -59,7 +59,7 @@ Posibles reglas de validación de datos:
 
 ## 📁 Estructura del repositorio
 
-<details><summary>(Estructura recomendada y planteada en clase)</summary>
+<details><summary>(Desplegar para ver la estructura recomendada y planteada en clase)</summary>
 
 
 ```
@@ -122,7 +122,7 @@ python model_training_evaluation.py
 python model_monitoring.py
 ```
 ---
-Despliegue de API:
+Despliegue de API con uvicorn:
 ```
 uvicorn src.model_deploy:app --reload
 ```
