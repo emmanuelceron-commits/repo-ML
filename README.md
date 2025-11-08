@@ -170,9 +170,10 @@ streamlit run app_streamlit.py
 
 - Se abre en http://localhost:8501
 
+---
+
 ### 🐋 Construcción y ejecución de imagen de Docker
 
----
 
 Crear imagen de la API:
 
