@@ -112,17 +112,24 @@ repo-ML/
 ---
 ## 🛤️ Flujos de ejecución del repositorio
 
-- Transformaciones, modelamiento y generación de métricas:
+### ⚙️🖥️📊 Transformaciones, modelamiento y generación de métricas:
 
 (Ubicarse en MLops_pipeline\src)
 
+- Generación de features:
 ```
 python ft_engineering.py
+```
+- Entrenamiento y evaluamiento de modelos 
+```
 python model_training_evaluation.py
+```
+- Monitoreo
+```
 python model_monitoring.py
 ```
 ---
-Despliegue de API con uvicorn:
+- Despliegue de API con uvicorn:
 ```
 uvicorn src.model_deploy:app --reload
 ```
