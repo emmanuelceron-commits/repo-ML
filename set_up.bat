@@ -20,7 +20,7 @@ echo Buscando código del proyecto en config.json...
 setlocal EnableDelayedExpansion
 
 REM Cambiar al directorio donde está config.json
-cd etl_scripts\src
+cd MLops_pipeline\src
 
 REM Leer línea que contiene "project_name"
 for /f "usebackq tokens=2 delims=:" %%A in (`findstr "project_code" config.json`) do (
@@ -33,15 +33,16 @@ for /f "usebackq tokens=2 delims=:" %%A in (`findstr "project_code" config.json`
 REM Volver al directorio raíz
 cd ..\..
 
+
 echo Creando nuevo ambiente virtual: %project_code%-venv
-py -m venv %project_code%-venv
+python -m venv %project_code%-venv
 
 echo Activating virtual environment...
 call %project_code%-venv\Scripts\activate
 
 if %ERRORLEVEL% EQU 0 (
     echo.
-    echo Ambiente virtaul creado con exito!.
+    echo Ambiente virtual creado con exito!
     echo Python actual: 
     where python
     
@@ -63,6 +64,8 @@ if %ERRORLEVEL% EQU 0 (
             if %ERRORLEVEL% EQU 0 (
                 echo Ambiente virtual registrado como kernel de Jupyter correctamente.
                 echo Ahora puedes seleccionar "%project_code%-venv Python ETL" en Jupyter notebook.
+                call %project_code%-venv\Scripts\activate
+                @REM cd MLops_pipeline\src
             ) else (
                 echo Advertencia: Fallo al registrar el ambiente virtual como kernel de Jupyter. Jupyter notebook puede no reconocer este ambiente virtual.
             )

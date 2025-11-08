@@ -1,7 +1,0 @@
-{
-    "project_code": "pet_adoption_ml",
-    "author": "Emmanuel Ceron",
-    "version": "1.0",
-    "description": "Predicción de adopción de mascotas",
-    "data_path": "Base_de_datos.csv"
-}

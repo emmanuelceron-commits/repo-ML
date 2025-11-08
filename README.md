@@ -92,6 +92,7 @@ repo-ML/
 repo-ML/
 └── MLops_pipeline/
 │   └── src/                        
+│        ├── config.json                    # Archivo de configuración para setup
 │        ├── Cargar_datos.ipynb             # Carga de dataset
 │        ├── comprension_eda.ipynb          # Análisis exploratorio
 │        ├── ft_engineering.py              # Generación de features
@@ -101,10 +102,9 @@ repo-ML/
 │        └── app_streamlit.py               # Interfaz visual de streamlit
 │
 ├── Base_de_datos.csv                       # Ubicación del dataset
-├── config.json                             # Archivo de configuración de pipeline
 ├── requirements.txt                        # Librerías y dependencias
 ├── Dockerfile                              # Configuración docker
-├── .dockerignore                              # Exclusiones de docker
+├── .dockerignore                           # Exclusiones de docker
 ├── .gitignore                              # Exclusiones de git
 ├── README.md                               # Documentación del proyecto
 └── set_up.bat                              # Script para preparar el entorno
@@ -112,9 +112,24 @@ repo-ML/
 ---
 ## 🛤️ Flujos de ejecución del repositorio
 
-### ⚙️🖥️📊 Transformaciones, modelamiento y generación de métricas:
+Luego de descargar el repositorio y posicionarse en la carpeta raíz:
 
-(Ubicarse en MLops_pipeline\src)
+1. Ejecutar set_up.bat, creará el entorno e instalará las librerías necesarias para la ejecución
+
+2. Inicializar el entorno (lo hace set_up.bat)
+
+> Abrir la terminal de comandos, ubicarse en la carpeta raíz y ejecutar el siguiente comando si el entorno no se inició con set_up.bat:
+
+```
+pet_adoption_ml-venv\Scripts\activate
+```
+3. Ubicarse en la carpeta src
+
+```
+cd .\MLops_pipeline\src\
+```
+
+### ⚙️🖥️📊 Transformaciones, modelamiento y generación de métricas:
 
 - Generación de features:
 ```
@@ -128,8 +143,14 @@ python model_training_evaluation.py
 ```
 python model_monitoring.py
 ```
+
+> Luego de ejecutar estos pasos, se habrán generado archivos de modelos y métricas que se usarán en los siguientes pasos.
+
 ---
-- Despliegue de API con uvicorn:
+
+### 🦄 Despliegue de API con uvicorn:
+Esta API usa el modelo que mejor se desempeñó (en nuestro caso, Random Forest) para generar las probabilidad de adopción de las mascotas que se le envíen
+
 ```
 uvicorn src.model_deploy:app --reload
 ```
@@ -141,7 +162,7 @@ Ejecución de interfaz de Streamlit:
 streamlit run app_streamlit.py
 ```
 
-## 🐋 Construcción y ejecución de imagen de Docker
+### 🐋 Construcción y ejecución de imagen de Docker
 
 ```
 docker build -t pet-adoption-api .
@@ -149,7 +170,9 @@ docker run -p 8000:8000 pet-adoption-api
 ```
 - Luego de ejecutar la imagen se pueden testear los endpoints en localhost:8000/docs
 
-<details><summary>Datos de prueba para los endpoints (desplegar para ver)</summary>
+### 🧪 Datos de prueba para los endpoints 
+
+<details><summary>(desplegar para ver)</summary>
 
 
 Mascota con baja adoptabilidad:
