@@ -18,6 +18,7 @@ Todo esto se puede lograr con la ayuda de una **base de datos de mascotas** (en 
 
 Este dataset de Kaggle contiene 2007 datos de mascotas en adopción, el cuál es sintético y fue recolectado en un periodo específico de tiempo con propósitos educacionales. 
 
+>[!note]
 > Si bien esto **no lo hace ideal para generalizar el comportamiento de las adopciones**, termina siendo ideal para proyectos de Machine Learning o Data Science con interés de aprender, predecir y entender tendencias de adopciones. 
 
 Estos datos se pueden usar para:
@@ -160,48 +161,12 @@ uvicorn model_deploy:app --reload
 
 - Enlace de pruebas: http://127.0.0.1:8000/docs
 
-> Abajo hay una sección desplegable con datos de prueba tanto en formato JSON como CSV que se pueden usar para probar la API. 
-
 ---
-### 📱📶 Ejecución de interfaz gráfica de Streamlit
-
-Esta interfaz no hace uso de la API, funciona independientemente y usa el modelo RandomForest directamente, y también permite visualizar algunas métricas.
-
-```
-streamlit run app_streamlit.py
-```
-
-- Se abre en http://localhost:8501
-
----
-
-### 🐋 Construcción y ejecución de imagen de Docker
-
-Hay que ubicarse nuevamente en la carpeta raíz del proyecto 
-
-> Ejecutar el comando si aún se ubica en /src :
-
-```
-cd ../..
-```
-
-Teniendo Docker instalado y en ejecución, se ejecuta el siguiente comando para crear la imagen de la API:
-
-```
-docker build -t pet-adoption-api .
-```
-
-Ejecutar imagen de la API:
-
-```
-docker run -p 8000:8000 pet-adoption-api
-```
-- Luego de ejecutar la imagen se pueden testear los endpoints en http://localhost:8000/docs
-
----
-
 
 ### 🧪 Datos de prueba para los endpoints 
+
+>[!TIP]
+> En la sección desplegable se incluyen datos de prueba tanto en formato JSON como CSV que se pueden usar para probar la API. 
 
 <details><summary>(desplegar para ver)</summary>
 
@@ -297,6 +262,44 @@ Rabbit,Rabbit,72,Brown,Small,3.2,0,1,150,450,0
 ```
 
 </details>
+
+---
+### 📱📶 Ejecución de interfaz gráfica de Streamlit
+
+Esta interfaz no hace uso de la API, funciona independientemente y usa el modelo RandomForest directamente, y también permite visualizar algunas métricas.
+
+```
+streamlit run app_streamlit.py
+```
+
+- Se abre en http://localhost:8501
+
+---
+
+### 🐋 Construcción y ejecución de imagen de Docker
+
+Hay que ubicarse nuevamente en la carpeta raíz del proyecto 
+
+> Ejecutar el comando si aún se ubica en /src :
+
+```
+cd ../..
+```
+
+Teniendo Docker instalado y en ejecución, se ejecuta el siguiente comando para crear la imagen de la API:
+
+```
+docker build -t pet-adoption-api .
+```
+
+Ejecutar imagen de la API:
+
+```
+docker run -p 8000:8000 pet-adoption-api
+```
+- Luego de ejecutar la imagen se pueden probar los endpoints en http://localhost:8000/docs
+
+
 
 ---
 
