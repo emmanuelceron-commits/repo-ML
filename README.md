@@ -166,9 +166,9 @@ uvicorn model_deploy:app --reload
 ### 🧪 Datos de prueba para los endpoints 
 
 >[!TIP]
-> En la sección desplegable se incluyen datos de prueba tanto en formato JSON como CSV que se pueden usar para probar la API. 
+> En la sección desplegable de abaio se incluyen datos de prueba tanto en formato JSON como CSV que se pueden usar para probar la API. 
 
-<details><summary>(desplegar para ver)</summary>
+<details><summary>(desplegar para ver datos de prueba)</summary>
 
 ---
 
