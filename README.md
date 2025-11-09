@@ -89,7 +89,7 @@ repo-ML/
 ---
 
 
-(Estructura de archivos usados en el proyecto)
+Estructura de archivos usados en el proyecto:
 ```
 repo-ML/
 └── MLops_pipeline/
@@ -105,6 +105,7 @@ repo-ML/
 │
 ├── Base_de_datos.csv                       # Ubicación del dataset
 ├── requirements.txt                        # Librerías y dependencias
+├── requirements_docker.txt                 # Dependencias imagen Docker
 ├── Dockerfile                              # Configuración docker
 ├── .dockerignore                           # Exclusiones de docker
 ├── .gitignore                              # Exclusiones de git
