@@ -54,6 +54,13 @@ if __name__ == "__main__":
     results.append(build_model(RandomForestClassifier(n_estimators=200, random_state=42,n_jobs=-1, class_weight='balanced_subsample',
                                                     min_samples_leaf=1,
                                                     max_features='sqrt'), "RandomForest"))
+    results.append(build_model(DecisionTreeClassifier(random_state=42,min_samples_leaf=1, max_features='sqrt',ccp_alpha=0.0), "DecisionTree"))
+    results.append(build_model(GradientBoostingClassifier(n_estimators=200, random_state=42,min_samples_leaf=1, max_features='sqrt', learning_rate=0.1), "GradientBoosting"))
+    results.append(build_model(XGBClassifier(n_estimators=200, use_label_encoder=False, eval_metric='logloss', random_state=42,n_jobs=-1), "XGBoost"))
+    # results.append(build_model(
+    #     DecisionTreeClassifier(max_depth=20, random_state=42), 
+    #     "DecisionTree_MaxDepth10"
+    # ))
     # results.append(build_model(
     #     RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42), 
     #     "RandomForest_MaxDepth10"
@@ -63,13 +70,6 @@ if __name__ == "__main__":
     #     "RandomForest_MaxDepthNone"
     # ))
     
-    results.append(build_model(DecisionTreeClassifier(random_state=42,min_samples_leaf=1, max_features='sqrt',ccp_alpha=0.0), "DecisionTree"))
-    results.append(build_model(GradientBoostingClassifier(n_estimators=200, random_state=42,min_samples_leaf=1, max_features='sqrt', learning_rate=0.1), "GradientBoosting"))
-    results.append(build_model(XGBClassifier(n_estimators=200, use_label_encoder=False, eval_metric='logloss', random_state=42,n_jobs=-1), "XGBoost"))
-    # results.append(build_model(
-    #     DecisionTreeClassifier(max_depth=20, random_state=42), 
-    #     "DecisionTree_MaxDepth10"
-    # ))
     
     # Comparar resultados
     df_results = pd.DataFrame(results)
