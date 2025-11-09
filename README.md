@@ -362,8 +362,9 @@ docker run -p 8000:8000 pet-adoption-api
   - 3 asuntos en model_monitoring.py porque se repiten varios Strings en el código que se pueden
     - Se aceptan pero se ignora porque es irrelevante y solo son unos strings para la generación de métricas 
   - un asunto en el model_training_evaluation.py sobre especificar memory argument para pipeline
+    - Se especifica para corregir y evitar problemas
   - 5 de estos asuntos son todos los asuntos de fiabilidad
-
+    - Se añadem los hyper parámetros necesarios a los modelos en model_training_evaluation.py
 
 ### 🛡️ Seguridad: 
 - Puntuación de seguridad: A, 0 issues abiertos

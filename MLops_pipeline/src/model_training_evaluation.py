@@ -47,18 +47,24 @@ if __name__ == "__main__":
 
     # Entrenamiento de varios modelos
     results = []
-    results.append(build_model(LogisticRegression(max_iter=5000, random_state=42, n_jobs=-1), "LogisticRegression"))
-    results.append(build_model(RandomForestClassifier(n_estimators=200, random_state=42,n_jobs=-1, class_weight='balanced_subsample'), "RandomForest"))
-    results.append(build_model(
-        RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42), 
-        "RandomForest_MaxDepth10"
-    ))
-    results.append(build_model(
-        RandomForestClassifier(n_estimators=200, max_depth=None, random_state=42), 
-        "RandomForest_MaxDepthNone"
-    ))
-    results.append(build_model(DecisionTreeClassifier(random_state=42), "DecisionTree"))
-    results.append(build_model(GradientBoostingClassifier(n_estimators=200, random_state=42), "GradientBoosting"))
+    results.append(build_model(LogisticRegression(max_iter=5000, 
+                                                random_state=42, 
+                                                n_jobs=-1), 
+                               "LogisticRegression"))
+    results.append(build_model(RandomForestClassifier(n_estimators=200, random_state=42,n_jobs=-1, class_weight='balanced_subsample',
+                                                    min_samples_leaf=1,
+                                                    max_features='sqrt'), "RandomForest"))
+    # results.append(build_model(
+    #     RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42), 
+    #     "RandomForest_MaxDepth10"
+    # ))
+    # results.append(build_model(
+    #     RandomForestClassifier(n_estimators=200, max_depth=None, random_state=42), 
+    #     "RandomForest_MaxDepthNone"
+    # ))
+    
+    results.append(build_model(DecisionTreeClassifier(random_state=42,min_samples_leaf=1, max_features='sqrt'), "DecisionTree"))
+    results.append(build_model(GradientBoostingClassifier(n_estimators=200, random_state=42,min_samples_leaf=1, max_features='sqrt'), "GradientBoosting"))
     results.append(build_model(XGBClassifier(n_estimators=200, use_label_encoder=False, eval_metric='logloss', random_state=42,n_jobs=-1), "XGBoost"))
     # results.append(build_model(
     #     DecisionTreeClassifier(max_depth=20, random_state=42), 
