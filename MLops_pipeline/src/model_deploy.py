@@ -47,7 +47,7 @@ def _prepare_dataframe(df: pd.DataFrame) -> pd.DataFrame:
         df = df[expected]
     except Exception as e:
         # Si no hay modelo o no existe feature_names_in_, devolvemos el df como está y el error será manejado arriba
-        raise
+        raise e
 
     return df
 

@@ -349,6 +349,7 @@ docker run -p 8000:8000 pet-adoption-api
   - Un asunto es sobre el Dockerfile y combinar dos comandos RUN que se ejecutan consecutivamente
     - Se corrige combinando ambos comandos en uno solo
   - Un asunto en app_streamlit.py (para controlar una excepción en caso de no cargar el modelo)
+    - Se arregla con linea de código que controla la excepción
   - 2 asuntos en el .ipynb del EDA sobre código comentado
     - Se arregla fácilmente borrando dichos comentarios, consecuentemente también mejorando la visibilidad del notebook.
   - 4 asuntos en el feature engineering (renombrar una variable para seguir convenciones de Python y memory argument para los pipelines)
@@ -357,6 +358,7 @@ docker run -p 8000:8000 pet-adoption-api
 ![](imgs/sonarcube_2.png)
 
   - 2 asuntos en el model_deploy.py sobre remover una variable sin usar y agregar lógica a un except
+    - Se corrige el control de la excepción manejando la variable sin usar para la excepción
   - 3 asuntos en model_monitoring.py porque se repiten varios Strings en el código que se pueden
   - un asunto en el model_training_evaluation.py sobre especificar memory argument para pipeline
   - 5 de estos asuntos son todos los asuntos de fiabilidad
