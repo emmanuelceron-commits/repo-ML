@@ -23,8 +23,9 @@ def load_model():
     try:
         model = joblib.load("RandomForest_model.pkl")
         return model
-    except:
+    except FileNotFoundError as e:
         st.error("❌ No se encontró el modelo entrenado (.pkl).")
+        raise e
         return None
 
 model = load_model()
