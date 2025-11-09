@@ -34,7 +34,7 @@ def build_model(model, model_name):
     pipe = Pipeline([
         ('preprocessor', preprocessor),
         ('classifier', model)
-    ])
+    ], memory=None)
     pipe.fit(X_train, y_train)
     preds = pipe.predict(X_test)
     metrics = summarize_classification(y_test, preds, model_name)
