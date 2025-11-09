@@ -54,9 +54,9 @@ with tab1:
             st.warning("⚠️ Se detectaron posibles cambios en la distribución de algunas variables.")
         else:
             st.success("✅ El modelo se mantiene estable. No se detecta drift significativo.")
-    except FileNotFoundError:
+    except FileNotFoundError as e:
         st.error("❌ No se encontró el archivo 'drift_results.csv'. Ejecuta primero model_monitoring.py.")
-
+        raise e
 # ============================================================
 # 🐕 TAB 2: Predicción del modelo
 # ============================================================

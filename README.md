@@ -63,11 +63,11 @@ Posibles reglas de validación de datos:
 - **Imputación de valores faltantes:**  
   Se utilizó la mediana para variables numéricas y la moda para las categóricas, buscando conservar la distribución original sin afectar la varianza de los datos.
 
-- **Codificación de variables categóricas:**  
-  Se aplicó `OneHotEncoder` para representar las variables `PetType` y `Breed`, evitando sesgos ordinales artificiales.
+- **Codificación de variables categóricas nominales:**  
+  Se usó `OneHotEncoder`, evitando sesgos ordinales artificiales.
 
 - **Estandarización / Escalado:**  
-  Se aplicó `MinMaxScaler` para variables numéricas (como edad o peso), permitiendo que todos los atributos estén en la misma escala y mejorando la estabilidad de los modelos.
+  Se aplicó `MinMaxScaler` para variables numéricas, permitiendo que todos los atributos estén en la misma escala.
 
 - **Conversión de variables ordinales:**  
   Las variables `Size` y `Color` (ordenado por claridad del color) mapearon a valores numéricos de acuerdo con su orden lógico.
@@ -77,6 +77,9 @@ Posibles reglas de validación de datos:
 
 - **Selección de atributos:**  
   Se eliminaron variables redundantes o irrelevantes (por ejemplo, identificadores únicos o campos descriptivos de texto no estandarizados).
+
+- **Guardado:**
+  Se guarda el procesador y demás resultantes como `processed_data.pkl`
 
 **[Puedes abrir ft_engineering.py para ver más detalles](./MLops_pipeline/src/ft_engineering.py)**
 
