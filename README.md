@@ -12,7 +12,7 @@ Todo esto se puede lograr con la ayuda de una **base de datos de mascotas** (en 
 
 ---
 
-## 🕵️ Algunos hallazgos del dataset durante la exploración del dataset
+## 🕵️ Algunos hallazgos del dataset durante la exploración del dataset (comprension_eda.ipynb)
 
 ### ℹ️ Descripción general de los datos
 
@@ -60,6 +60,29 @@ Posibles reglas de validación de datos:
 
 ---
 
+## 🛠️👷 Decisiones relevantes en la ingeniería de características (ft_engineering.py)
+
+- **Imputación de valores faltantes:**  
+  Se utilizó la mediana para variables numéricas y la moda para variables categóricas, con el fin de conservar la distribución original sin afectar la varianza de los datos.
+
+- **Codificación de variables categóricas:**  
+  Se aplicó `OneHotEncoder` para representar las variables `PetType` y `Breed`, evitando sesgos ordinales artificiales.
+
+- **Estandarización / Escalado:**  
+  Se aplicó `MinMaxScaler` para variables numéricas (como edad o peso), permitiendo que todos los atributos estén en la misma escala y mejorando la estabilidad de los modelos.
+
+- **Conversión de variables ordinales:**  
+  Las variables `Size` y `Color` se mapearon manualmente a valores numéricos de acuerdo con su orden lógico.
+
+- **Separación de conjuntos:**  
+  Los datos se dividieron en entrenamiento (80%) y prueba (20%) para garantizar una evaluación imparcial del modelo.
+
+- **Selección de atributos:**  
+  Se eliminaron variables redundantes o irrelevantes (por ejemplo, identificadores únicos o campos descriptivos de texto no estandarizados).
+
+**[Puedes abrir ft_engineering.py para ver más detalles](./MLops_pipeline/src/ft_engineering.py)**
+
+---
 ## 📁 Estructura del repositorio
 
 <details><summary>(Desplegar para ver la estructura recomendada y planteada en clase)</summary>
@@ -122,12 +145,12 @@ Teniendo instalado Python, luego de descargar el repositorio y posicionarse en l
 
 2. Inicializar el entorno (lo hace set_up.bat)
 
-> Abrir la terminal de comandos ubicada en la carpeta raíz y ejecutar el siguiente comando si el entorno no se inició con set_up.bat:
+> Si el entorno no se inició con set_up.bat, abrir la terminal de comandos ubicandose en la carpeta raíz y ejecutar el siguiente comando:
 
 ```
 pet_adoption_ml-venv\Scripts\activate
 ```
-3. Ubicarse en la carpeta src
+3. Ubicarse en la carpeta src para los demás pasos
 
 ```
 cd .\MLops_pipeline\src\
@@ -148,7 +171,7 @@ python model_training_evaluation.py
 python model_monitoring.py
 ```
 
-> Luego de ejecutar estos pasos, se habrán generado archivos de modelos y métricas que se usarán en los siguientes pasos.
+> Luego de ejecutar estos pasos, se habrán generado archivos de modelos `.pkl` y algunas métricas en `.csv` que se usarán más adelante.
 
 ---
 
@@ -326,6 +349,7 @@ docker run -p 8000:8000 pet-adoption-api
   - Un asunto en app_streamlit.py (para controlar una excepción en caso de no cargar el modelo)
   - 2 asuntos en el .ipynb del EDA sobre código comentado
   - 4 asuntos en el feature engineering (renombrar una variable y memory argument para los pipelines)
+    - Se arregla simplemente específicando memory=None en los pipelines
 
 ![](imgs/sonarcube_2.png)
 

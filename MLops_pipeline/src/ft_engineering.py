@@ -48,10 +48,13 @@ def run_pipeline():
 
     # pipelines simples
     num_pipe = Pipeline([('imp', SimpleImputer(strategy='median')),
-                         ('scaler', MinMaxScaler())])
+                         ('scaler', MinMaxScaler())
+                         ], memory=None)
     cat_pipe = Pipeline([('imp', SimpleImputer(strategy='most_frequent')),
-                         ('ohe', OneHotEncoder(handle_unknown='ignore', sparse_output=False))])
-    bin_pipe = Pipeline([('imp', SimpleImputer(strategy='most_frequent'))])  # 0/1, por si hay nulos
+                         ('ohe', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
+                         ], memory=None)
+    bin_pipe = Pipeline([('imp', SimpleImputer(strategy='most_frequent')) # 0/1, por si hay nulos
+                         ], memory=None) 
 
     # ColumnTransformer
     transformers = []
@@ -59,7 +62,7 @@ def run_pipeline():
     if cat_cols: transformers.append(('cat', cat_pipe, cat_cols))
     if bin_cols: transformers.append(('bin', bin_pipe, bin_cols))
 
-    preprocessor = ColumnTransformer(transformers=transformers, remainder='drop')
+    preprocessor = ColumnTransformer(transformers=transformers, remainder='drop', n_jobs=-1)
 
     # split estratificado
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
@@ -70,13 +73,13 @@ def run_pipeline():
     print("X_train:", X_train.shape, "X_test:", X_test.shape)
     
     
-    X_sample_transformed = preprocessor.fit_transform(X_train.head(20))
+    x_sample_transformed = preprocessor.fit_transform(X_train.head(20))
 
     # Obtener nombres de columnas resultantes
     feature_names = preprocessor.get_feature_names_out()
 
     # Convertir a DataFrame legible
-    df_transformed = pd.DataFrame(X_sample_transformed, columns=feature_names)
+    df_transformed = pd.DataFrame(x_sample_transformed, columns=feature_names)
     print("\n🔍 Vista previa de los datos transformados:")
     print(df_transformed.head().T)
     
