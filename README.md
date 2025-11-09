@@ -6,7 +6,7 @@ Este es un **proyecto para el curso de Machine Learning**, en el que se principa
 
 En este caso, la idea es desarrollar un modelo capaz predecir la **probabilidad de adopción de mascotas**, lo cual podría ayudar a entidades como los refugios de mascotas a plantear nuevas estrategias para priorizar y optimizar las adopciones.
 
-Todo esto se puede lograr con la ayuda de una **base de datos de mascotas** (en este caso, un dataset de Kaggle) acompañada con una **variable objetivo** (como lo es AdoptionLikelihood en nuestro dataset), que permita diferenciar a mascotas más fáciles de adoptar todo esto **dentro del esquema de MLops**.
+Todo esto se puede lograr con la ayuda de una **base de datos de mascotas** (en este caso, un dataset de Kaggle) acompañada con una **variable objetivo** (como lo es `AdoptionLikelihood` en nuestro dataset), que permita diferenciar a mascotas más fáciles de adoptar todo esto **dentro del esquema de MLops**.
 
 [Link del dataset original en Kaggle](https://www.kaggle.com/datasets/rabieelkharoua/predict-pet-adoption-status-dataset/data)
 
@@ -40,19 +40,17 @@ Estos datos se pueden usar para:
 
 Luego de revisar la relación entre variables categóricas y la variable objetivo:
 
-- Si p ≈ 0 y Cramer's V > 0.3, hay relación real y relevante. Las variables Size y Vaccinated entran en esta categoría
+- Si p ≈ 0 y Cramer's V > 0.3, hay relación real y relevante. Las variables `Size` y `Vaccinated` entran en esta categoría
 
-- Si p ≈ 0 pero Cramer's V < 0.2 → relación estadísticamente detectable pero débil (Breed, PetType, HealthCondition).
+- Si p ≈ 0 pero Cramer's V < 0.2 → relación estadísticamente detectable pero débil (`Breed`, `PetType`, `HealthCondition`).
 
-- Si p es grande (ej. 0.37 en Color) → no hay casi evidencia de relación, y además V confirma que es irrelevante. Por lo que PreviousOwner y Color pueden no influir mucho en la adoptabilidad.
+- Si p es grande (ej. 0.37 en Color) → no hay casi evidencia de relación, y además V confirma que es irrelevante. Por lo que `PreviousOwner` y `Color` pueden no influir mucho en la adoptabilidad.
 
 Posibles reglas de validación de datos:
 
-- AgeMonths debe ser >= 0 y < 240.
+- `AgeMonths` debe ser >= 0 y < 240.
 
-- WeightKg > 0 y < 100.
-
-- Categorías con muy pocos registros agrupar en 'Other' (ej. razas raras).
+- `WeightKg` > 0 y < 100.
 
 - Especie que coincida con raza
 
@@ -63,7 +61,7 @@ Posibles reglas de validación de datos:
 ## 🛠️👷 Decisiones relevantes en la ingeniería de características (ft_engineering.py)
 
 - **Imputación de valores faltantes:**  
-  Se utilizó la mediana para variables numéricas y la moda para variables categóricas, con el fin de conservar la distribución original sin afectar la varianza de los datos.
+  Se utilizó la mediana para variables numéricas y la moda para las categóricas, buscando conservar la distribución original sin afectar la varianza de los datos.
 
 - **Codificación de variables categóricas:**  
   Se aplicó `OneHotEncoder` para representar las variables `PetType` y `Breed`, evitando sesgos ordinales artificiales.
@@ -72,7 +70,7 @@ Posibles reglas de validación de datos:
   Se aplicó `MinMaxScaler` para variables numéricas (como edad o peso), permitiendo que todos los atributos estén en la misma escala y mejorando la estabilidad de los modelos.
 
 - **Conversión de variables ordinales:**  
-  Las variables `Size` y `Color` se mapearon manualmente a valores numéricos de acuerdo con su orden lógico.
+  Las variables `Size` y `Color` (ordenado por claridad del color) mapearon a valores numéricos de acuerdo con su orden lógico.
 
 - **Separación de conjuntos:**  
   Los datos se dividieron en entrenamiento (80%) y prueba (20%) para garantizar una evaluación imparcial del modelo.
@@ -141,11 +139,11 @@ repo-ML/
 
 Teniendo instalado Python, luego de descargar el repositorio y posicionarse en la carpeta raíz:
 
-1. Ejecutar set_up.bat, creará el entorno e instalará las librerías necesarias para la ejecución
+1. Ejecutar `set_up.bat`, creará el entorno e instalará las librerías necesarias para la ejecución
 
-2. Inicializar el entorno (lo hace set_up.bat)
+2. Inicializar el entorno (lo hace `set_up.bat`)
 
-> Si el entorno no se inició con set_up.bat, abrir la terminal de comandos ubicandose en la carpeta raíz y ejecutar el siguiente comando:
+> Si el entorno no se inició con `set_up.bat`, abrir la terminal de comandos ubicandose en la carpeta raíz y ejecutar el siguiente comando:
 
 ```
 pet_adoption_ml-venv\Scripts\activate
@@ -189,7 +187,7 @@ uvicorn model_deploy:app --reload
 ### 🧪 Datos de prueba para los endpoints 
 
 >[!TIP]
-> En la sección desplegable de abaio se incluyen datos de prueba tanto en formato JSON como CSV que se pueden usar para probar la API. 
+> En la sección desplegable de abaio se incluyen datos de prueba tanto en formato `.json` como `.csv` que se pueden usar para probar la API. 
 
 <details><summary>(desplegar para ver datos de prueba)</summary>
 
@@ -275,7 +273,7 @@ Varias mascotas:
 ```
 > Endpoint /predict_batch
 
-en .csv:
+en `.csv`:
 ```
 PetType,Breed,AgeMonths,Color,Size,WeightKg,Vaccinated,HealthCondition,TimeInShelterDays,AdoptionFee,PreviousOwner
 Dog,Golden Retriever,8,White,Large,25.0,1,0,10,200,1
@@ -303,7 +301,7 @@ streamlit run app_streamlit.py
 
 Hay que ubicarse nuevamente en la carpeta raíz del proyecto 
 
-> Ejecutar el comando si aún se ubica en /src :
+> Ejecutar el comando si aún se ubica en `/src` :
 
 ```
 cd ../..
