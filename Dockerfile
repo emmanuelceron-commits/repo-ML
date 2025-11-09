@@ -1,6 +1,9 @@
 # Imagen base
 FROM python:3.11-slim
 
+# Crear un usuario no root (mejora el security hotspot)
+RUN useradd -m appuser
+
 # Directorio de trabajo
 WORKDIR /app
 
@@ -14,6 +17,10 @@ RUN pip install --upgrade pip && \
 # Copiar solo lo necesario
 COPY MLops_pipeline/src/model_deploy.py /app/MLops_pipeline/src/model_deploy.py
 COPY MLops_pipeline/src/RandomForest_model.pkl /app/MLops_pipeline/src/RandomForest_model.pkl
+
+# Cambiar el dueño de los archivos y usar un usuario sin privilegios
+RUN chown -R appuser:appuser /app
+USER appuser
 
 # Exponer el puerto
 EXPOSE 8000
