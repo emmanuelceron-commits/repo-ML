@@ -348,8 +348,8 @@ docker run -p 8000:8000 pet-adoption-api
   - Un asunto es sobre el Dockerfile y combinar dos comandos RUN que se ejecutan consecutivamente
   - Un asunto en app_streamlit.py (para controlar una excepción en caso de no cargar el modelo)
   - 2 asuntos en el .ipynb del EDA sobre código comentado
-  - 4 asuntos en el feature engineering (renombrar una variable y memory argument para los pipelines)
-    - Se arregla simplemente específicando memory=None en los pipelines
+  - 4 asuntos en el feature engineering (renombrar una variable para seguir convenciones de Python y memory argument para los pipelines)
+    - Se arregla simplemente específicando memory=None en los pipelines y renombrando la variable.
 
 ![](imgs/sonarcube_2.png)
 
