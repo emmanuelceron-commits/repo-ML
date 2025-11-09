@@ -56,7 +56,7 @@ Posibles reglas de validación de datos:
 
 - Especie que coincida con raza
 
-[Abrir notebook de comprensión_eda.ipynb para ver más detalles](./MLops_pipeline/src/comprension_eda.ipynb)
+**[Abrir notebook de comprensión_eda.ipynb para ver más detalles](./MLops_pipeline/src/comprension_eda.ipynb)**
 
 ---
 
