@@ -360,6 +360,7 @@ docker run -p 8000:8000 pet-adoption-api
   - 2 asuntos en el model_deploy.py sobre remover una variable sin usar y agregar lógica a un except
     - Se corrige el control de la excepción manejando la variable sin usar para la excepción
   - 3 asuntos en model_monitoring.py porque se repiten varios Strings en el código que se pueden
+    - Se aceptan pero se ignora porque es irrelevante y solo son unos strings para la generación de métricas 
   - un asunto en el model_training_evaluation.py sobre especificar memory argument para pipeline
   - 5 de estos asuntos son todos los asuntos de fiabilidad
 
