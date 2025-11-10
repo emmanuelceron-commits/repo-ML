@@ -29,9 +29,10 @@ Estos datos se pueden usar para:
 
 - Desarrollo de estrategias para incrementar las adopciones.
 
-⛔ No hay nulos en el dataset
 
 ### 🔎📑📊 Hallazgos relevantes en la exploración de datos (EDA)
+
+⛔ No hay nulos en el dataset
 
 - Las mascotas con menos de 50 meses tienden a ser más adoptadas
 - Las mascotas con más de 100 meses tienden a ser menos adoptadas
