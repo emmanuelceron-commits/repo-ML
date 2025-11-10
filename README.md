@@ -1,6 +1,6 @@
 # 💻 Proyecto de Machine Learning
 
-## 🐶🐱🐾 Clasificación de adoptadibilidad de mascotas 🐰🐹🎲
+## 🐶🐱🐾 Clasificación de adoptabilidad de mascotas 🐰🐹🎲
 
 Este es un **proyecto para el curso de Machine Learning**, en el que se principalmente se busca realizar el **desarrollo y despliegue de un modelo supervisado predictivo** bajo una comprensión del negocio al que se brinda el proyecto como una solución. 
 
@@ -39,7 +39,7 @@ Estos datos se pueden usar para:
 - Las mascotas con menos de 50 meses tienden a ser más adoptadas
 - Las mascotas con más de 100 meses tienden a ser menos adoptadas
 
-- La diferencia entre mascotas adoptadas y sin adoptar en el dataset es de 1 a 3 (un 33% aprox son adoptadas, un 66% están sin adoptar), lo cual puede ser un desbalanceo que deba considerarse en el modelamiento
+- La diferencia entre mascotas adoptadas y sin adoptar en el dataset es de 1 a 3 (un 33% aproximadamente son adoptadas, un 66% están sin adoptar), lo cual puede ser un desbalanceo que deba considerarse en el modelamiento
 
 Luego de revisar la relación entre variables categóricas y la variable objetivo:
 
@@ -175,7 +175,8 @@ repo-ML/
 └── set_up.bat                              # Script para preparar el entorno
 ```
 ---
-## 🛤️ Flujos de ejecución del repositorio
+[!important]
+> ## **🛤️ Flujos de ejecución del repositorio**
 
 Teniendo instalado Python, luego de descargar el repositorio y posicionarse en la carpeta raíz:
 
