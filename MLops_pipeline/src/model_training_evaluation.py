@@ -13,6 +13,7 @@ from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
 from sklearn.model_selection import cross_val_score
+import numpy as np
 
 # Cargar datos procesados
 # X_train, X_test, y_train, y_test, preprocessor = joblib.load("processed_data.pkl")

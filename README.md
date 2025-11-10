@@ -330,7 +330,7 @@ docker run -p 8000:8000 pet-adoption-api
 ## 📝 Resultados de pruebas iniciales en sonarcloud.io
 
 ### 📄 Resumen general
-![Resultado de pruebas: Overall code](imgs/sonarcube_1.png)
+![Resultado de pruebas: Overall code](imgs/sonar_1.png)
 
 
 
@@ -345,7 +345,7 @@ docker run -p 8000:8000 pet-adoption-api
 - Mantenibilidad: A, significa que el ratio de deuda técnica es menor al 5% (solo 19 asuntos):
 
 
-![](<imgs/sonarcube_3.png>)
+![](<imgs/sonar_3.png>)
   - Un asunto es sobre el Dockerfile y combinar dos comandos RUN que se ejecutan consecutivamente
     - Se corrige combinando ambos comandos en uno solo
   - Un asunto en app_streamlit.py (para controlar una excepción en caso de no cargar el modelo)
@@ -355,7 +355,7 @@ docker run -p 8000:8000 pet-adoption-api
   - 4 asuntos en el feature engineering (renombrar una variable para seguir convenciones de Python y memory argument para los pipelines)
     - Se arregla simplemente específicando memory=None en los pipelines y renombrando la variable.
 
-![](imgs/sonarcube_2.png)
+![](imgs/sonar_2.png)
 
   - 2 asuntos en el model_deploy.py sobre remover una variable sin usar y agregar lógica a un except
     - Se corrige el control de la excepción manejando la variable sin usar para la excepción
@@ -373,3 +373,9 @@ docker run -p 8000:8000 pet-adoption-api
 ![Resultado de pruebas: Overall code](imgs/securityhotspot1.png)
 ![Resultado de pruebas: Overall code](imgs/securityhotspot2.png)
 
+  - Estos hotspots se arreglan fácil corrigiendo el dockerfile para que solamente copie los archivos necesarios y no se ejecute el contenedor con permisos de root.
+
+
+  ### 🔧🛠️ Resultados luego de manejar los errores:
+
+  ![alt text](imgs/sonar_4.png) 
