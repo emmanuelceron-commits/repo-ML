@@ -100,6 +100,24 @@ Por lo tanto, se puede escoger según el criterio de optimización:
 
 Bajo este orden de ideas, se escoge el modelo de `RandomForest` por su simpleza y velocidad de ejecución.
 
+## 🔎📶🖨️ Monitoreo del model (model_monitoring.py)
+
+Como el dataset no cuenta con datos históricos o flujos temporales reales, el monitoreo se diseñó de manera simulada.
+
+El archivo toma como referencia el conjunto de entrenamiento `X_train` y lo compara con una muestra representativa del conjunto de prueba `X_test` para evaluar posibles desviaciones en la distribución de los datos (data drift)
+
+Se aplicaron pruebas estadísticas de estabilidad:
+
+- KS Test para variables numéricas.
+
+- Chi-squared para variables categóricas.
+
+- PSI (Population Stability Index) para medir el cambio poblacional general.
+
+El resultado puede interpretarse por medio de la aplicación de Streamlit, la cual muestra indicadores visuales de comparación entre distribuciones históricas y actuales, permitiendo identificar si el modelo mantiene un comportamiento estable o si se requieren acciones de reentrenamiento.
+
+Para este caso, todos los valores se encuentran dentro de rangos de estabilidad, mostrando que el modelo conserva un desempeño consistente frente a variaciones moderadas en los datos.
+
 ---
 ## 📁 Estructura del repositorio
 
@@ -307,7 +325,7 @@ Rabbit,Rabbit,72,Brown,Small,3.2,0,1,150,450,0
 ---
 ### 📱📶 Ejecución de interfaz gráfica de Streamlit
 
-Esta interfaz no hace uso de la API, funciona independientemente y usa el modelo RandomForest directamente, y también permite visualizar algunas métricas.
+Esta interfaz no hace uso de la API, funciona independientemente y usa el modelo `RandomForest` directamente, y también permite visualizar algunas métricas generadas en el monitoreo de datos al ejecutar `model_monitoring.py`.
 
 ```
 streamlit run app_streamlit.py
