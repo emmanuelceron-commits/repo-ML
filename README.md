@@ -175,7 +175,7 @@ repo-ML/
 └── set_up.bat                              # Script para preparar el entorno
 ```
 ---
-[!important]
+> [!important]
 > ## **🛤️ Flujos de ejecución del repositorio**
 
 Teniendo instalado Python, luego de descargar el repositorio y posicionarse en la carpeta raíz:
