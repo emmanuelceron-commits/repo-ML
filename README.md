@@ -104,7 +104,7 @@ Bajo este orden de ideas, se escoge el modelo de `RandomForest` por su simpleza 
 
 ## 🔎📶🖨️ Monitoreo del model (model_monitoring.py)
 
-Como el dataset no cuenta con datos históricos o flujos temporales reales, el monitoreo se diseñó de manera simulada.
+Como el dataset no cuenta con datos históricos o flujos temporales reales, **el monitoreo se diseñó de manera simulada.**
 
 El archivo toma como referencia el conjunto de entrenamiento `X_train` y lo compara con una muestra representativa del conjunto de prueba `X_test` para evaluar posibles desviaciones en la distribución de los datos (data drift)
 
@@ -364,7 +364,7 @@ docker run -p 8000:8000 pet-adoption-api
 
 ---
 
-## 📝 Resultados de pruebas iniciales en sonarcloud.io
+## 📝 Resultados iniciales de pruebas en sonarcloud.io
 
 ### 📄 Resumen general
 ![Resultado de pruebas: Overall code](imgs/sonar_1.png)
