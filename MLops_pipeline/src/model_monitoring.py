@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 from scipy.stats import ks_2samp, chi2_contingency
 import joblib
+import matplotlib.pyplot as plt
+import os
 
 # --- Función para PSI ---
 def psi(expected, actual, bins=10):
@@ -97,6 +99,25 @@ for c in X_train.select_dtypes(include=[np.number]).columns:
     psi_val = psi(X_train[c], X_new[c])
     alerta = "⚠️ Alto Drift" if psi_val > 0.2 else "✅ Estable"
     print(f"{c}: {psi_val:.4f}  -> {alerta}")
+
+# Crear carpeta de gráficos si no existe
+os.makedirs("drift_charts", exist_ok=True)
+
+# Graficar comparaciones para variables numéricas
+for col in X_train.select_dtypes(include=[np.number]).columns:
+    plt.figure(figsize=(6, 4))
+    plt.hist(X_train[col], bins=20, alpha=0.5, label="Histórico (train)", color='skyblue', density=True)
+    plt.hist(X_new[col], bins=20, alpha=0.5, label="Actual (new)", color='salmon', density=True)
+    plt.title(f"Distribución de {col} - Histórico vs Actual")
+    plt.xlabel(col)
+    plt.ylabel("Densidad")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f"drift_charts/{col}_drift.png")
+    plt.close()
+
+print("\n📊 Gráficos de comparación guardados en carpeta 'drift_charts/'")
+
 
 df_drift.to_csv("drift_results.csv", index=False)
 print("\n💾 Resultados guardados en 'drift_results.csv'")

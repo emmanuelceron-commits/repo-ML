@@ -8,6 +8,8 @@ import streamlit as st # type: ignore
 import pandas as pd
 import joblib
 import numpy as np
+import os
+from PIL import Image
 
 # ==============================
 # Configuración general
@@ -58,6 +60,19 @@ with tab1:
     except FileNotFoundError as e:
         st.error("❌ No se encontró el archivo 'drift_results.csv'. Ejecuta primero model_monitoring.py.")
         raise e
+    
+    st.subheader("📊 Comparación de distribuciones históricas vs actuales")
+
+    if os.path.exists("drift_charts"):
+        cols = st.columns(3)
+        images = [f for f in os.listdir("drift_charts") if f.endswith(".png")]
+        for i, img_file in enumerate(images):
+            with cols[i % 3]:
+                st.image(os.path.join("drift_charts", img_file), caption=img_file.replace("_drift.png", ""))
+    else:
+        st.info("Aún no se han generado gráficos de drift. Ejecuta `model_monitoring.py` para crearlos.")
+
+    
 # ============================================================
 # 🐕 TAB 2: Predicción del modelo
 # ============================================================
