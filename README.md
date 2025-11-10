@@ -187,7 +187,7 @@ Teniendo instalado Python, luego de descargar el repositorio y posicionarse en l
 > Si se cierra la terminal o el entorno no se inició con `set_up.bat`, entonces abrir la terminal de comandos ubicandose en la carpeta raíz y ejecutar el siguiente comando:
 
 >[!note]
-> En Windows, solo es apretar click derecho y seleccionar la opción "Abrir en terminal"
+> En Windows, solo es apretar click derecho dentro de la carpeta y seleccionar la opción "Abrir en terminal"
 ```
 pet_adoption_ml-venv\Scripts\activate
 ```
