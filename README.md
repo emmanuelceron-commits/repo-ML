@@ -30,9 +30,11 @@ Estos datos se pueden usar para:
 - Desarrollo de estrategias para incrementar las adopciones.
 
 
-### 🔎📑📊 Hallazgos relevantes en la exploración de datos (comprension_eda.ipynb)
+### 🔎📑📊 Algunos hallazgos relevantes en la exploración de datos (comprension_eda.ipynb)
 
-⛔ No hay nulos en el dataset
+⛔ No hay nulos, espacios o datos vacíos en el dataset
+
+- Solo se borró PetID
 
 - Las mascotas con menos de 50 meses tienden a ser más adoptadas
 - Las mascotas con más de 100 meses tienden a ser menos adoptadas
@@ -177,7 +179,7 @@ repo-ML/
 
 Teniendo instalado Python, luego de descargar el repositorio y posicionarse en la carpeta raíz:
 
-1. Ejecutar `set_up.bat`, creará el entorno e instalará las librerías necesarias para la ejecución
+1. Ejecutar `set_up.bat`, creará el entorno virtual e instalará las librerías necesarias para la ejecución
 
 2. Inicializar el entorno (lo hace `set_up.bat`)
 
