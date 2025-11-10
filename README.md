@@ -30,7 +30,7 @@ Estos datos se pueden usar para:
 - Desarrollo de estrategias para incrementar las adopciones.
 
 
-### 🔎📑📊 Hallazgos relevantes en la exploración de datos (EDA)
+### 🔎📑📊 Hallazgos relevantes en la exploración de datos (comprension_eda.ipynb)
 
 ⛔ No hay nulos en el dataset
 
@@ -84,7 +84,7 @@ Posibles reglas de validación de datos:
 
 **[Puedes abrir ft_engineering.py para ver más detalles](./MLops_pipeline/src/ft_engineering.py)**
 
-## 🧠🖥️ Selección del mejor modelo
+## 🧠🖥️ Selección del mejor modelo (model_training_evaluation.py)
 
 Luego de comparar el rendimiento mediante conjunto de prueba y validación cruzada, se observa que `RandomForestClassifier` y `GradientBoostingClassifier` ofrecen resultados casi equivalentes.
 
@@ -96,7 +96,7 @@ Por lo tanto, se puede escoger según el criterio de optimización:
 
 - Si se prioriza rendimiento estable y generalización, se selecciona `GradientBoosting`.
 
-- Si se prioriza simplicidad y velocidad de ejecución, se mantiene `RandomForest` como modelo final.”
+- Si se prioriza simplicidad y velocidad de ejecución, se mantiene `RandomForest` como modelo final.
 
 Bajo este orden de ideas, se escoge el modelo de `RandomForest` por su simpleza y velocidad de ejecución.
 
