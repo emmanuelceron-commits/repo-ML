@@ -83,6 +83,22 @@ Posibles reglas de validación de datos:
 
 **[Puedes abrir ft_engineering.py para ver más detalles](./MLops_pipeline/src/ft_engineering.py)**
 
+## 🧠🖥️ Selección del mejor modelo
+
+Luego de comparar el rendimiento mediante conjunto de prueba y validación cruzada, se observa que `RandomForestClassifier` y `GradientBoostingClassifier` ofrecen resultados casi equivalentes.
+
+Sin embargo, `GradientBoosting` presenta un F1 promedio ligeramente superior y una menor desviación estándar, indicando mayor estabilidad ante la variabilidad de los datos.
+
+Por otro lado, `RandomForest` obtuvo la mejor métrica F1 en el conjunto de prueba individual y es más rápido de entrenar e interpretar.
+
+Por lo tanto, se puede escoger según el criterio de optimización:
+
+- Si se prioriza rendimiento estable y generalización, se selecciona `GradientBoosting`.
+
+- Si se prioriza simplicidad y velocidad de ejecución, se mantiene `RandomForest` como modelo final.”
+
+Bajo este orden de ideas, se escoge el modelo de `RandomForest` por su simpleza y velocidad de ejecución.
+
 ---
 ## 📁 Estructura del repositorio
 
