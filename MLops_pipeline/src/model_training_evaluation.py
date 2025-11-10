@@ -72,11 +72,7 @@ if __name__ == "__main__":
     results.append(build_model(GradientBoostingClassifier(n_estimators=200, random_state=42,min_samples_leaf=1, max_features='sqrt', learning_rate=0.1), "GradientBoosting"))
     results.append(build_model(XGBClassifier(n_estimators=200, use_label_encoder=False, eval_metric='logloss', random_state=42,n_jobs=-1), "XGBoost"))
     
-    # ---------------------------------------------------------
-    # 🔁 Evaluación con validación cruzada adicional (solo imprime resultados)
-    # ---------------------------------------------------------
-
-    print("\n=== 🔁 Evaluación con validación cruzada (5-fold CV) ===")
+    print("Evaluación con validación cruzada (5-fold CV) ===")
 
     for model, model_name in [
         (LogisticRegression(max_iter=5000, random_state=42, n_jobs=-1), "LogisticRegression"),
@@ -88,7 +84,7 @@ if __name__ == "__main__":
             n_estimators=200, random_state=42, min_samples_leaf=1,
             max_features='sqrt', learning_rate=0.1), "GradientBoosting"),
         (XGBClassifier(
-            n_estimators=200, use_label_encoder=False, eval_metric='logloss',
+            n_estimators=200, eval_metric='logloss',
             random_state=42, n_jobs=-1), "XGBoost")
     ]:
         pipe = Pipeline([
