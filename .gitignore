@@ -1,5 +1,6 @@
 __pycache__/
 pet_adoption_ml-venv/
+MLops_pipeline/src/drift_charts/
 *.csv
 !Base_de_datos.csv
 *.pkl
