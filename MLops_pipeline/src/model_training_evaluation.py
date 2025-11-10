@@ -49,7 +49,7 @@ def cross_validation(model, model_name, cv=5):
     pipe = Pipeline([
         ('preprocessor', preprocessor),
         ('classifier', model)
-    ])
+    ], memory=None)
     scores = cross_val_score(pipe, X_train, y_train, cv=cv, scoring='f1', n_jobs=-1)
     mean_f1, std_f1 = scores.mean(), scores.std()
     print(f"🔁 Cross-validation {cv}-fold para {model_name}: F1 mean={mean_f1:.3f}, std={std_f1:.3f}")
@@ -94,7 +94,7 @@ if __name__ == "__main__":
         pipe = Pipeline([
             ('preprocessor', preprocessor),
             ('classifier', model)
-        ])
+        ], memory=None)
         scores = cross_val_score(pipe, X_train, y_train, cv=5, scoring='f1', n_jobs=-1)
         print(f"{model_name} → F1 promedio (5-fold): {scores.mean():.3f} ± {scores.std():.3f}")
 
