@@ -53,7 +53,7 @@ def run_pipeline():
     cat_pipe = Pipeline([('imp', SimpleImputer(strategy='most_frequent')),
                          ('ohe', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
                          ], memory=None)
-    bin_pipe = Pipeline([('imp', SimpleImputer(strategy='most_frequent')) # 0/1, por si hay nulos
+    bin_pipe = Pipeline([('imp', SimpleImputer(strategy='most_frequent')) # 0/1
                          ], memory=None) 
 
     # ColumnTransformer
